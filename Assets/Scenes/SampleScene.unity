@@ -132,7 +132,7 @@ GameObject:
   - component: {fileID: 127342388}
   - component: {fileID: 127342387}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: XRay_Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -652,8 +652,8 @@ Transform:
   m_GameObject: {fileID: 1647680873}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.2, y: 0.35, z: 0.5}
-  m_LocalScale: {x: 8.70911, y: 3.6782603, z: 1.8202}
+  m_LocalPosition: {x: 0.2, y: 1.0852, z: 0.5}
+  m_LocalScale: {x: 8.70911, y: 2.207692, z: 1.8202}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -784,7 +784,7 @@ GameObject:
   - component: {fileID: 2135784057}
   - component: {fileID: 2135784056}
   m_Layer: 0
-  m_Name: Capsule (1)
+  m_Name: Normal_Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -879,7 +879,7 @@ Transform:
   m_GameObject: {fileID: 2135784055}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.48, y: 0, z: 3.02}
+  m_LocalPosition: {x: 6.99, y: 0, z: 3.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
