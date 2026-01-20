@@ -108,7 +108,6 @@ Shader "Custom/SurfaceRadar"
             {
                 float2 xz = IN.positionWS.xz;
 
-                // Base grid
                 float g = grid(xz, _GridScale);
                 float3 col = lerp(_BaseColor.rgb, _GridColor.rgb, g * 0.6);
 
@@ -122,10 +121,10 @@ Shader "Custom/SurfaceRadar"
                 float t = _Time.y * _TimeScale;
                 float sweep = fmod(t * _SweepSpeed, radius);
 
-                // --- Animated noise (subtle breakup of the ring) ---
+                // Animated noise
                 float2 nUV = xz * _NoiseScale + float2(t * _NoiseSpeed, -t * _NoiseSpeed * 0.7);
                 float noise = SAMPLE_TEXTURE2D(_NoiseTex, sampler_NoiseTex, nUV).r;
-                noise = (noise - 0.5) * 2.0; // -1..1
+                noise = (noise - 0.5) * 2.0; 
 
                 // Perturb the band slightly
                 float distNoisy = dist + noise * (_NoiseStrength * _SweepWidth);
@@ -135,23 +134,22 @@ Shader "Custom/SurfaceRadar"
                 float band = 1.0 - saturate(abs(distNoisy - sweep) / width);
                 band = pow(band, _SweepSharpness);
 
-                // --- Trail behind sweep (the "afterglow") ---
-                // Behind means dist < sweep. Use (sweep - dist) in 0..TrailLength
+                // Trail behind sweep
                 float behind = sweep - distNoisy;
                 float trail = 0.0;
                 if (behind > 0.0)
                 {
                     trail = 1.0 - saturate(behind / max(_TrailLength, 0.0001));
-                    trail = trail * trail; // softer curve
+                    trail = trail * trail; 
                 }
 
-                // --- Radial fade + rim darken for nicer look ---
+                // Radial fade and rim darken
                 float radial01 = saturate(dist / radius);
                 float radialFade = 1.0 - radial01;             // brighter near center
-                float rim = smoothstep(0.7, 1.0, radial01);     // near the edge
+                float rim = smoothstep(0.7, 1.0, radial01);     
                 col *= (1.0 - rim * _RimDarken);
 
-                // Combine sweep + trail
+                // Combine sweep and trail
                 float3 sweepCol = _SweepColor.rgb * (band + trail * _TrailStrength);
 
                 col += sweepCol * radialFade;

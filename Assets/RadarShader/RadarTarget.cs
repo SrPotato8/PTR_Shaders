@@ -6,11 +6,9 @@ public class RadarTarget : MonoBehaviour
 
     public Category category = Category.Neutral;
 
-    [Header("Highlight")]
     public Color highlightColor = Color.yellow;
     public float highlightDuration = 0.25f;
 
-    [Tooltip("Material property name to tint. Works with URP Lit (_BaseColor) or Unlit (_BaseColor).")]
     public string colorProperty = "_BaseColor";
 
     Renderer _r;
@@ -23,7 +21,6 @@ public class RadarTarget : MonoBehaviour
         _r = GetComponentInChildren<Renderer>();
         _mpb = new MaterialPropertyBlock();
 
-        // Read initial color from shared material as a baseline
         if (_r && _r.sharedMaterial && _r.sharedMaterial.HasProperty(colorProperty))
             _original = _r.sharedMaterial.GetColor(colorProperty);
         else
@@ -45,7 +42,8 @@ public class RadarTarget : MonoBehaviour
         {
             _timer -= Time.deltaTime;
             float k = Mathf.Clamp01(_timer / Mathf.Max(highlightDuration, 0.0001f));
-            // quick flash then fade
+
+            // Quick flash and then fade
             Color c = Color.Lerp(_original, highlightColor, 1f - k);
             _mpb.SetColor(colorProperty, c);
         }

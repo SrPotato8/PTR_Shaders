@@ -5,13 +5,11 @@ public class MovementCameraRadar : MonoBehaviour
     public float mouseSensitivity = 150f;
 
     float xRotation = 0f;
-
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
-
     void Update()
     {
         float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;

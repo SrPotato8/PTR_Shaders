@@ -7,7 +7,7 @@ public class RadarSweepHighlighter : MonoBehaviour
     public Transform radarOrigin;
 
     [Header("Hit band")]
-    public float hitTolerance = 0.5f; // how close to the band counts as "hit"
+    public float hitTolerance = 0.5f; // how close to the band counts as a hit
 
     [Header("Which categories get highlighted")]
     public List<RadarTarget.Category> highlightCategories = new List<RadarTarget.Category>
@@ -47,7 +47,8 @@ public class RadarSweepHighlighter : MonoBehaviour
             }
 
             Vector3 p = t.transform.position;
-            // compare XZ distance to sweep ring
+
+            // Compare XZ distance to sweep ring
             float dist = Vector2.Distance(new Vector2(p.x, p.z), new Vector2(o.x, o.z));
 
             if (Mathf.Abs(dist - sweepDist) <= hitTolerance)
