@@ -1,26 +1,24 @@
 using UnityEngine;
 
-public class CameraMovement : MonoBehaviour
+public class CameraMovementRadar : MonoBehaviour
 {
-    float m_rotationX = 0f;
-    float m_rotationY = 0f;
+    public float mouseSensitivity = 150f;
 
-    public float m_sensitivity = 5f;
-    public float m_movementSpeed = 10f;
+    float xRotation = 0f;
+
+    void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
 
     void Update()
     {
-        // For rotation
-        m_rotationY += Input.GetAxis("Mouse X") * m_sensitivity;
-        m_rotationX += Input.GetAxis("Mouse Y") * -m_sensitivity;
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
-        transform.localEulerAngles = new Vector3(m_rotationX, m_rotationY, 0);
+        xRotation -= mouseY;
+        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
-        // For movement
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-
-        Vector3 movement = transform.forward * vertical + transform.right * horizontal;
-        transform.position += movement * m_movementSpeed * Time.deltaTime;
+        transform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
     }
 }
