@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CameraMovement : MonoBehaviour
+public class MovementCamera : MonoBehaviour
 {
     float m_rotationX = 0f;
     float m_rotationY = 0f;

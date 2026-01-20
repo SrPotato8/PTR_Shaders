@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class CameraMovementRadar : MonoBehaviour
+public class MovementCameraRadar : MonoBehaviour
 {
     public float mouseSensitivity = 150f;
 

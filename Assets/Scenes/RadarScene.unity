@@ -441,7 +441,7 @@ GameObject:
   - component: {fileID: 815479615}
   - component: {fileID: 815479614}
   - component: {fileID: 815479617}
-  - component: {fileID: 815479618}
+  - component: {fileID: 815479619}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -567,7 +567,7 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
---- !u!114 &815479618
+--- !u!114 &815479619
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -576,11 +576,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 815479613}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 985809e695347dd4bb181bfab025620b, type: 3}
+  m_Script: {fileID: 11500000, guid: dd9b5175f2c0e2f43be3206f523d8e7b, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CameraMovement
-  m_sensitivity: 1
-  m_movementSpeed: 5
+  m_EditorClassIdentifier: Assembly-CSharp::MovementCameraRadar
+  mouseSensitivity: 150
 --- !u!1 &1225327603
 GameObject:
   m_ObjectHideFlags: 0
