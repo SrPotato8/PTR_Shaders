@@ -53,10 +53,11 @@
 
             half4 frag (Varyings i) : SV_Target
             {
-                // Distancia cámara → fragmento
+                // Distance between the camera and the object
                 float dist = distance(i.positionWS, _WorldSpaceCameraPos);
 
-                // Factor de fade (1 cerca, 0 lejos)
+                // Fade factor depending on the distance
+                // For the effect of less color intensity when it is far to the camera
                 float fade = saturate(1.0 - (dist - _FadeStart) / (_FadeEnd - _FadeStart));
 
                 half4 col = _Color;
